@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+	<title>Shopping List</title> 
+	
+
+	
+</head>
+<body>
+	
+	<div class="main"></div>
+
+<script>
+	const main=document.querySelector('.main');
+const ul=document.createElement('ul');
+const input1=document.createElement('input');
+const button=document.createElement('button');
+button.textContent="Add Item";
+main.prepend(button);
+main.prepend(input1);
+main.append(ul);
+button.addEventListener('click',(e)=>{
+	console.log(input1.value);
+	createItem(input1.value);
+	input1.value="";
+
+})
+
+const myStuff=["Banana","Apple","Milk"];
+myStuff.forEach((ele,ind)=>{
+	createItem(myStuff[ind]);
+})
+
+function createItem(val){
+	console.log(val);
+	const ele=document.createElement('li');
+	ele.textContent=val;
+	ele.style.fontSize='3em';
+	const span=document.createElement('span');
+	span.textContent='    X    ';
+	span.style.color="red";
+	span.addEventListener('click',(e)=>{
+		ele.remove();
+
+	})
+	span.addEventListener('mouseover',(e)=>{
+		span.style.cursor='grab';
+
+	})
+	span.addEventListener('mouseout',(e)=>{
+		span.style.cursor='pointer';
+
+	})
+	ele.append(span);
+	ul.append(ele);
+}
+</script>
+</body>
+</html>
